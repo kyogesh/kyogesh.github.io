@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Bingo!</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+		<link href="css/animations.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/flxMenu.css" rel="stylesheet">
+		<link href="css/flxMenuExmp2.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<style>
+     		/*******input-upload*******/
+
+			.inputfile {
+			    width: 0.1px;
+			    height: 0.1px;
+			    opacity: 0;
+			    overflow: hidden;
+			    position: absolute;
+			    z-index: -1;
+			}
+
+			.inputfile + label {
+			    /*max-width: 80%;*/
+			    width: 100%;
+			    font-size: 1.25rem;
+			    /* 20px */
+			    font-weight: 700;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    cursor: pointer;
+			    display: inline-block;
+			    overflow: hidden;
+			    padding: 0.625rem 1.25rem;
+			    /* 10px 20px */
+			        padding-top: 15px;
+			        min-height: 49px;
+			        margin-bottom: -5px;
+			}
+
+			 .inputfile + label {
+			    /*display: none;*/
+			}
+
+			.inputfile:focus + label,
+			.inputfile.has-focus + label {
+			    outline: 1px dotted #000;
+			    outline: -webkit-focus-ring-color auto 5px;
+			}
+
+			.inputfile + label * {
+			    /* pointer-events: none; */
+			    /* in case of FastClick lib use */
+			} 
+
+			.inputfile + label svg {
+			    width: 1em;
+			    height: 1em;
+			    vertical-align: middle;
+			    fill: currentColor;
+			    margin-top: -0.25em;
+			    /* 4px */
+			    margin-right: 0.25em;
+			    /* 4px */
+			}
+			 
+
+			/* style 2 */
+
+			.inputfile-2 + label {
+			    color: #d3394c;
+			    border: 1px solid #cecbcb;
+			    background: #fff;
+			}
+
+			.inputfile-2:focus + label,
+			.inputfile-2.has-focus + label,
+			.inputfile-2 + label:hover {
+			    color: #555;
+			}
+    		.inputfile-2 + label { color: #555; }
+    		.inputWrap .block {  display: block; min-height: 49px; }
+    
+    		/*****28-11-18*****/
+    		.sectionTermsme { position: relative; }
+			.option-heading{background: #facf2c; cursor: pointer;  padding: 7px 10px;  
+			  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+			-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+			box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+			    }
+			.option-content{
+			    background: #fff; padding: 10px; 
+			    box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
+			}
+			.padding-8 { padding: 0 8%; }
+		    .redBtnmore { color: #a41c2c; font-weight: 600; font-size: 16px; }
+		    .contentTerms h5 { font-size: 16px; font-weight: 600; }
+		    .arrowWrapm { float: right; }
+
+			/* Notice this class ! */
+			.is-hidden{ display: none; }
+    
+		    @media (min-width: 320px) and (max-width: 767px) {
+		        .padding-8 { padding: 0 4%; }
+		    }
+    
+			/*    .croppie-container .cr-boundary { position: static !important; }*/
+    
+		</style>
+	</head>
+	<body>
+		<header id="header">
+			<div class="top container-fluid">
+				<div class="col-xs-12 wrptopSearch">
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="topleft-info">
+
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<div id="sb-search" class="sb-search sb-search-open">
+								<form role="search" method="get" class="search-form" action="#">
+									<input type="search" class="sb-search-input" placeholder="SEARCH" value="" name="s">
+									<button type="submit" class="sb-search-submit"><span class="screen-reader-text">Search</span></button>
+									<span class="sb-icon-search" title="Click to start searching"></span>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid navWrap">
+				<div class="col-xs-12 wrpnavLinks">
+					<div id="logo" class="pull-left">
+						<a href="http://bingosnacks.com/"><img src="http://bingosnacks.com/wp-content/themes/bingo/images/logo.png" alt="Bingo!" title="Bingo!"></a>
+					</div>      
+			        <div id="exmp1NavBar">
+				        <div id="exmp1Trigger" class="menuTrigger flx-left"><a href="javascript:" class="flxMenuOpen">
+				        	<ul class="menuSymbol"><li></li><li></li><li></li></ul>
+				        	<div class="menuFrame" style="display: none;">
+				        		<div class="menuSlider">
+				        			<a href="javascript:" title="close" class="menuClose" onclick="$(this).trigger('menuClose')"> </a>
+				        		</div>
+				        	</div>
+				    	</div>
+				        <div id="flxFramemenuExmp1" class="flxInitFrame">
+				        	<ul id="menuExmp1" style="" class="flxMenu">
+				           		<li class="borderSkew" id="homeMenu"><a href="#">Home</a></li>			   
+								<li class="borderSkew" id="snackMenu"><a class="mLinks" href="JavaScript:Void(0);">Snack Corner</a>
+								</li>
+								<li class="borderSkew"><a href="#">Ads Corner</a></li>
+								<li class="borderSkew"><a href="#">Bingo! Comedy Adda</a></li>
+								<li class="borderSkew"><a href="#">Make a Meme</a></li>
+								<li class="borderSkew" id="blogMenu"><a href="#">Blog</a></li>
+								<li class="borderSkew"><a href="#" style="border: 2px solid #facf2c;color: #facf2c">Contest</a></li>
+				        	</ul>
+				    	</div>
+			        </div>
+				</div>
+			</div>
+		</header>
+		<section class="intoWrap printoWrap" id="prcarousal" style="height: 580px">
+		    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		        <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		        <span class="sr-only">Next</span>
+		    </a>
+
+		    <img class="chips img-responsive" src="http://bingosnacks.com/wp-content/themes/bingo/images/homeChipsOne.png" id="homeChipsOne">
+	        <img class="chips img-responsive" src="http://bingosnacks.com/wp-content/themes/bingo/images/homeChipsTwo.png" id="homeChipsTwo">
+	        <div class="col-xs-12 newSlideDiv newSlideDivMbl">
+	            <div class="prnewSlideDiv">
+		            <div id="carousel-example-generic" style="height:422px;padding:0px"class="carousel slide bgYellow">
+		               <!-- <img class="new-range img-responsive" src="http://bingosnacks.com/wp-content/themes/bingo/images/new-range.png" id="new-range">-->
+		                <!-- <ol class="carousel-indicators">
+		                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		                </ol> -->
+
+		                <div class="carousel-inner" role="listbox">
+
+		                    <!-- ** Bingo! Yumitos ** -->
+		                    <div class="item active deepskyblue animatedParent">
+		                       
+								<img src="images/dummy_banner_1.jpg" style="width:100%" alt="Bingo! Tedhe medhe - Masala Tadka">
+		                    </div>
+							
+		                 
+		                    <div class="item deepskyblue animatedParent">
+		                        
+								<img src="images/dummy_banner_2.jpg" style="width:100%" alt="Bingo! Tedhe medhe - Masala Tadka">
+										
+		                    </div>
+		                    <!-- /.item -->
+							
+							
+							 <!-- ** Bingo! No Rulz**  -->
+		                    <div class="item deepskyblue animatedParent">		                       
+								<img src="images/dummy_banner_3.jpg" style="width:100%" alt="Bingo! Mixups Cheese">
+		                     
+
+	                        </div>
+								
+							<div class="item deepskyblue animatedParent">		                       
+									<img src="images/dummy_banner_4.jpg" style="width:100%"  alt="Bingo! Mixups Cheese">
+		                     
+
+	                        </div>
+	                    </div>
+		                    <!-- /.item -->
+						<img src="http://bingosnacks.com/wp-content/themes/bingo/images/veg-mark.png" class="vegMark responsive" alt="">
+	                </div>
+				</div>
+            </div>
+		</section>
+		<section class="sectionTermsme">
+	        <div class="col-xs-12 col-sm-12 col-md-12 padding-8">
+		        <div id="rules-dropdown" class="option-heading" style="cursor: auto;">
+		            <span class="redBtnmore">RANVEER KO MAZAA CHAKHAAO CONTEST RULES</span>
+	                <div class="arrowWrapm">
+	              		<span id="arrowUp-dropdown" class="arrow-up is-hidden">▲</span>
+	                    <span id="arrowDown-dropdown" class="arrow-down">▼</span>     
+	                </div>         
+	            </div>
+		        <div id="rules-dropdown-content" class="option-content is-hidden">
+			    	<div class="contentTerms">
+				        <h5>Lorem ipsum dolor sit amet, in falli labore salutandi has!</h5>
+
+				        <p>Complectitur conclusionemque te nam, brute erant harum et vel.</p>
+
+				        <p>In per rebum paulo scripserit. Constituto philosophia mea ad:</p>
+
+				 
+
+				        <p>1. Dicit postea possit per eu, duo tamquam theophrastus et, et impetus maluisset mea. </p>
+
+				        <p>2. Est id possim audire, nam viris mollis animal id, ut qui doctus persecuti. </p>
+
+				        <p>3. Tantas adipisci convenire ne has, melius euripidis cu pro, vivendum recusabo cu vis.</p>
+
+				        <p>4. Habeo postea omnium in vis, mel iusto quaestio ei, eum te tantas aperiam.</p>
+
+				        <p>5. No aperiri dissentiunt mea, sed porro doming ad.</p>
+
+				 
+
+				        <p><strong>Minim salutatus posidonium pri ne, has ullum labore interesset no! </strong></p>
+			       
+			        </div>
+	            </div>
+	        </div>
+	        <script>
+	        	document.getElementById("rules-dropdown").addEventListener("click", function(){
+				  document.getElementById("rules-dropdown-content").classList.toggle("is-hidden");
+				  document.getElementById("arrowUp-dropdown").classList.toggle("is-hidden");
+				  document.getElementById("arrowDown-dropdown").classList.toggle("is-hidden");
+				});
+	        </script>
+    	</section>
+    	<section id="makeMeme">
+
+	        <div class="col-xs-12 col-sm-12 col-md-6 padding0">
+	            <!-- <div id="canvasWrapper">    </div>  -->
+	            <div class="memeenWrap col-md-12">
+	            	<a class="left carousel-control" href="#meme-caraousel" role="button" data-slide="prev">
+				        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				        <span class="sr-only">Previous</span>
+				    </a>
+				    <a class="right carousel-control" href="#meme-caraousel" role="button" data-slide="next">
+				        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				        <span class="sr-only">Next</span>
+				    </a>
+	                <div id="meme-caraousel" class="meme-generator col-md-12 carousel slide">
+	                	<div class="carousel-inner" role="listbox">
+
+		                    <!-- ** Bingo! Yumitos ** -->
+		                    <div class="item active">
+		                       
+								<img src="images/dummy_image_1.jpg" alt="" style="width: 100%">
+		                    </div>
+							
+		                 
+		                    <div class="item">
+		                        
+								<img src="images/dummy_image_2.jpg" alt="" style="width: 100%">
+										
+		                    </div>
+		                    <!-- /.item -->
+							
+							
+							 <!-- ** Bingo! No Rulz**  -->
+		                    <div class="item">		                       
+								<img src="images/dummy_image_3.jpg" alt="" style="width: 100%">
+		                     
+
+	                        </div>
+								
+							<div class="item">		                       
+									<img src="images/dummy_image_4.jpg"  alt="" style="width: 100%">
+		                     
+
+	                        </div>
+	                    </div>
+                 		<!-- <img id="mg-image" class="mg-image img-responsive" src="images/dummy_image_1.jpg" alt=""> -->
+	                    <div id="targetTop" class="memeContent"> </div>
+	                    <div id="targetBottom" class="memeContent"> </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="col-xs-12 col-sm-12 col-md-6 padding0">
+
+	           
+
+	            <div class="customizeBox box">
+
+	                <form action="#" method="post" id="dform" enctype="multipart/form-data">
+	                    <div class="col-xs-12 col-sm-12 col-md-12">
+	                        
+	                        <div class="box">
+	                            <div class="inputWrap">
+	                                <p><span class="meTitle">Name:</span></p>
+	                                <div class="wrapBorder">
+	                                    <input type="hidden" id="image" name="image" value="">
+	                                    <input type="hidden" id="ext" name="ext" value="">
+	                                    <input id="topTextBox" name="topTextBox" type="text" class="block effect-8" placeholder="Enter Name">
+	                                    <span class="focus-border">
+	                                    <i></i>
+	                                  </span>
+	                                </div>
+	                            </div>
+	                            <div class="inputWrap">
+	                                <p><span class="meTitle">Contact:</span></p>
+	                                <div class="wrapBorder">
+	                                    <input id="bottomTextBox" name="bottomTextBox" type="text" class="block effect-8" placeholder="Enter Contact">
+	                                    <span class="focus-border">
+	                                    <i></i>
+	                                  </span>
+	                                </div>
+	                            </div>
+	                            <div class="inputWrap" style="margin-bottom:1em;">
+	                                <p><span class="meTitle">Details:</span></p>
+	                                <div class="wrapBorder">
+	                                    <input id="bottomTextBox" name="bottomTextBox" type="text" class="block effect-8" placeholder="Enter Description">
+	                                    <span class="focus-border">
+	                                    <i></i>
+	                                  </span>
+	                                </div>
+	                            </div>
+	                             
+	                            
+	                             
+	                        </div>
+	                    </div>
+
+
+	                    <div class="col-xs-12 col-sm-12 col-md-12">
+
+	                        <div class="box boxButton" style="margin-bottom:15px">
+
+	                            <!--<a href="" class="btn mg-download hvr-bounce-to-right">Download Your Image!</a>-->
+	                            <button type="submit" class="btn mg-download hvr-bounce-to-right">Submit</button>
+	                        </div>
+
+
+	                    </div>
+	                </form>
+
+	            </div>
+				 <div class="memestepWrap">
+	                <p class="redBold">Description: Ea usu ullum malorum luptatum, mei etiam noster salutatus no.</p>
+	                <p class="blackBold">Contest Rules:</p>
+	                <ul>
+	                    <li> <span class="redtxtli">Rule 1 :</span> Prima graecis quo ut, alienum conclusionemque mei ad, et vix ipsum dolor utinam. Nulla erroribus. </li>
+	                    <li> <span class="redtxtli">Rule 2 :</span> Suas partem petentium eam id. Eos ad dicat integre, no has laudem disputando.</li>
+	                    <li> <span class="redtxtli">Rule 3 :</span> Ei mel ludus docendi officiis, decore impedit dolores sea ne.</li>
+	                    <li> <span class="redtxtli">Rule 4 :</span> Ex mazim prompta signiferumque pri. Ea mei viris graeci, cum ut prima repudiare deterruisset, cu vis tota epicurei deterruisset.</li>
+
+	                </ul>
+
+	            </div>
+
+	        </div>
+			<script src="http://bingosnacks.com/wp-content/themes/bingo/js/custom-file-input.js"></script>
+		</section>
+		<footer id="footer" class="animatedParent">
+		    <img class="chips img-responsive" src="http://bingosnacks.com/wp-content/themes/bingo/images/footerChips.png" id="footerChips">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-lg-5 col-sm-4">
+		                <nav class="footer-links text-lg-right  pt-2 pt-lg-0 text-right">
+		                    <a href="#" target="_blank">About Us</a>
+		                    <!--<a href="http://www.itcportal.com/fmcg-store-locator/default.aspx" target="_blank">Store Locator</a>-->
+		                    <a href="#" target="_blank">Contact Us</a>
+		                    <a href="#">Sitemap</a>
+		                </nav>
+
+
+		            </div>
+
+		            <div class="col-lg-2 col-sm-4 text-lg-left text-center">
+		                <div class="social-links">
+		                    <a href="#" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+		                    <a href="#" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+		                    <a href="#" class="youtube" target="_blank"><i class="fa fa-youtube"></i></a>
+		                    <a href="#" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+
+
+		                </div>
+		            </div>
+		            <div class="col-lg-5 col-sm-4 text-lg-left ">
+		                <nav class="footer-links text-lg-right  pt-2 pt-lg-0 text-left">
+		                    <!--<a href="#" target="_blank">T & C</a>
+		                        <a href="#" target="_blank">Privacy Policy</a>-->
+		                    <a href="#" target="_blank" rel="nofollow">ITC Portal</a>
+		                </nav>
+
+		            </div>
+
+		        </div>
+		    </div>
+		</footer>
+	</body>
+</html>
